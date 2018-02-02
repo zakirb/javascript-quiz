@@ -6,12 +6,6 @@ var score = 0;
 var questionCount = 0;
 var questionArray = [];
 
-
-// get results.question results.answers results.incorrect_answer results.incorrect_answer[]
-// build
-//add one to count
-// record if correct or not for score
-// get next question
 var displayQuestion = function() {
   $('#questionbox').text(questionArray[questionCount].question);
   var answerValue = [];
@@ -20,38 +14,36 @@ var displayQuestion = function() {
   answerValue.push(correct);
   answerValue = answerValue.concat(incorrect);
   for (i = 0; i < answerValue.length; i++) {
-  $('.question').append("<input type='radio' name='answer' id='option'" + i + "' value='" + answerValue[i] + "' >" + "<p class='answers'>" + answerValue[i] + "</p>");
+  $('.question').append("<input type='radio' name='answer' id='option" + i + "' value='" + answerValue[i] + "' >" + "<span class='answers'>" + answerValue[i] + "</span>");
   };
-  questionCount++;
+};
+
+var checkForEnd = function() {
+  if (questionCount >= questionArray.length) {
+    $('.container').toggleClass('hide');
+    $('.scorebox').toggleClass('hide').text('Score: '+ score);
+  }
 };
 
 var addScore = function() {
   var correct = questionArray[questionCount].correct_answer;
   var incorrect = questionArray[questionCount].incorrect_answers;
 
-  if ($('#option1').val() === correct && $('#option1').attr('checked') === true) {
-    score++;
-  }
-  console.log($('#option1'));
-
-
-
-  };
-
-
-
-
+  for (i = 0; i < questionArray.length; i++) {
+    if ($('#option' + i).val() === correct && $('#option' + i).is(':checked')) {
+      score++;
+    }
+    };
+    questionCount++;
+    checkForEnd();
+};
 
 var nextQuestion = function () {
   addScore();
   $('input').remove();
   $('.answers').remove();
   displayQuestion();
-
-
 };
-
-
 
 var getQuestions = function () {
 
@@ -64,16 +56,7 @@ var getQuestions = function () {
 });
 };
 
-
-
-
-
-
-
-
   $(document).ready(function() {
       getQuestions();
 
-
-      // displayQuestion(questionObject);
   });

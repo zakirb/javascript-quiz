@@ -20,3 +20,30 @@ input {
   padding: 5px;
   border: 1px solid black;
 }
+
+.hide {
+	display: none;
+}
+
+.scorebox {
+	font-size: 3em;
+	background-color: blue;
+	text-align: center;
+	margin: 100px auto;
+	vertical-align: center;
+	width:25%;
+}
+
+.container {
+	width: 200px;
+	margin: 0 auto;
+}
+
+#option0, #option1, #option2, #option3 {
+	width: 100%;
+	text-align: center;
+	margin: 10px auto;
+	
+}
+
+
