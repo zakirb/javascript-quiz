@@ -1,0 +1,22 @@
+body {
+  margin: 0 auto;
+  padding: 0px;
+  text-align: center;
+
+}
+
+
+h1 {
+  color: blue;
+}
+
+input {
+  display: block;
+}
+
+.nextbox {
+  width:30px;
+  margin: 20px auto;
+  padding: 5px;
+  border: 1px solid black;
+}
